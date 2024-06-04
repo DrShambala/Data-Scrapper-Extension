@@ -23,4 +23,4 @@ document.getElementById('scrapeButton').addEventListener('click', () => {
     });
   });
 });
-//|| response.numbers.length > 0        response.numbers.join('\n');
+//|| response.numbers.length > 0        response.numbers.join('\n'); 
