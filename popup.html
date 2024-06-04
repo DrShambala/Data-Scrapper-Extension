@@ -11,20 +11,43 @@
       color: rgb(221, 220, 220);
       border-radius: 20px;
     }
-    #scrapedText {
+    #scrapedText ,#phoneNumbers {
       white-space: pre-wrap;
       margin-top: 10px;
       font-size: 18px;
       margin: 10px;
     }
+    /* .container{
+      background: rgb(204, 204, 115);
+    } */
 
+    /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #181818;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Scrape Text</h1>
     <button id="scrapeButton">Scrape Text</button>
-
+    <h2>Phone Numbers</h2>
+  <div id="phoneNumbers"></div>
   </div>
   <div id="scrapedText"></div>
   <script src="popup.js"></script>
