@@ -8,19 +8,18 @@ document.getElementById('scrapeButton').addEventListener('click', () => {
         if (response.text && response.text.length > 0 ) {
           scrapedTextContainer.textContent = response.text.join('\n\n');
         } else {
-          scrapedTextContainer.textContent = 'No text found1.';
+          scrapedTextContainer.textContent = 'No text found.';
         }
 
-        if (response.numbers || response.numbers.length > 0 ) {
+        if (response.numbers && response.numbers.length > 0 ) {
           phoneNumbersContainer.textContent = response.numbers.join('\n');
         } else {
-          phoneNumbersContainer.textContent = 'No phone numbers found1.';
+          phoneNumbersContainer.textContent = 'No phone numbers found.';
         }
       } else {
-        scrapedTextContainer.textContent = 'No text found2.';
-        phoneNumbersContainer.textContent = 'No phone numbers found2.';
+        scrapedTextContainer.textContent = 'No text found.';
+        phoneNumbersContainer.textContent = 'No phone numbers found.';
       }
     });
   });
 });
-//|| response.numbers.length > 0        response.numbers.join('\n'); 
