@@ -4,7 +4,7 @@
   <title>Scrape Text Extension</title>
   <style>
     body {
-      width: 400px;
+      width: auto;
       margin: 0;
       font-family: Arial, sans-serif;
       background: #181818ad;
@@ -17,10 +17,11 @@
       font-size: 18px;
       margin: 10px;
     }
-    /* .container{
-      background: rgb(204, 204, 115);
-    } */
-
+    .container{
+      /* background: rgb(204, 204, 115); */
+      display: flex;
+      justify-content: center;
+    }
     /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -40,17 +41,34 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #a1a1a1;
 }
+.txt{
+  width: 49%;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.num{
+  width: 49%;
+  float: right;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+#scrapeButton{
+  margin: 10px;
+  padding: 20px;
+}
   </style>
 </head>
 <body>
+  <button id="scrapeButton">Scrape Text</button>
   <div class="container">
-    <h1>Scrape Text</h1>
-    <button id="scrapeButton">Scrape Text</button>
-    <h2>Phone Numbers</h2>
-  <div id="phoneNumbers"></div>
+    <div class="txt">
+      <div id="scrapedText"></div>
+    </div>
+    <div class="num">
+      <div id="phoneNumbers"></div>
+
+    </div>
   </div>
-  <div id="scrapedText"></div>
   <script src="popup.js"></script>
 </body>
 </html>
- 
