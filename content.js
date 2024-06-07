@@ -4,21 +4,25 @@ function scrapeTextAndNumbers() {
   const elements = document.querySelectorAll(selectors);
   const scrapedText = [];
   const phoneNumbers = [];
-  const phonePattern = /\b0\d{4}\s\d{5}|\b0\d{5}\s\d{4}\b/g;
+  const phonePattern = /\b0\d{5}\s\d{5}\b/g;
 
   elements.forEach(element => {
     const fontSize = window.getComputedStyle(element).fontSize;
-    if (parseFloat(fontSize) > 15 ) {
-      const text = element.innerText.trim();
-      scrapedText.push(text);
+    
+    if (parseFloat(fontSize) > 15) {
+      const txtfornums = element.innerText.trim();
+      const foundNumbers = txtfornums.match(phonePattern);
 
-      const foundNumbers = text.match(phonePattern);
       if (foundNumbers) {
         phoneNumbers.push(...foundNumbers);
       }
     }
+    if (parseFloat(fontSize) > 5) {
+      const text = element.innerText.trim();
+      scrapedText.push(text);
+    }
   });
- 
+
   return {
     text: scrapedText.filter(text => text.length > 0),
     numbers: phoneNumbers
@@ -32,4 +36,3 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     sendResponse(result);
   }
 });
- 
