@@ -1,4 +1,13 @@
-chrome.runtime.onInstalled.addListener(() => {
-    console.log("Scrape Text Extension installed");
-  });
-   
+chrome.action.onClicked.addListener((tab) => {
+  chrome.scripting.executeScript(
+    {
+      target: { tabId: tab.id },
+      files: ["content.js"]
+    },
+    () => {
+      chrome.tabs.sendMessage(tab.id, { action: "scrapeTextNumbersAndLinks" }, (response) => {
+        console.log(response);
+      });
+    }
+  );
+});
