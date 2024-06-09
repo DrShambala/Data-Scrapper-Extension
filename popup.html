@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Scrape Text Extension</title>
   <style>
@@ -11,64 +12,90 @@
       color: rgb(221, 220, 220);
       border-radius: 20px;
     }
-    #scrapedText ,#phoneNumbers {
+
+    #scrapedText,
+    #phoneNumbers,
+    #links {
       white-space: pre-wrap;
       margin-top: 10px;
       font-size: 18px;
       margin: 10px;
     }
-    .container{
+    #phoneNumbers{
+      pad: 10px;
+    }
+
+    .container {
       /* background: rgb(204, 204, 115); */
       display: flex;
       justify-content: center;
+      padding: 20px;
     }
+
     /* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: #181818;
-}
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #181818;
+    }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #ffffff;
-}
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #ffffff;
+    }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
-}
-.txt{
-  width: 49%;
-  border-radius: 5px;
-  border: 1px solid black;
-}
-.num{
-  width: 49%;
-  float: right;
-  border-radius: 5px;
-  border: 1px solid black;
-}
-#scrapeButton{
-  margin: 10px;
-  padding: 20px;
-}
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #a1a1a1;
+    }
+
+    .txt {
+      width: auto;
+      border-radius: 5px;
+      /* border: 1px solid black; */
+    }
+
+    .num {
+      /* width: 200px; */
+      float: right;
+      border-radius: 5px;
+      /* border: 1px solid black; */
+    }
+
+    .websites {
+      width: auto;
+      float: right;
+      border-radius: 5px;
+      /* border: 1px solid black; */
+    }
+
+    #scrapeButton {
+      margin: 10px;
+      padding: 20px;
+    }
   </style>
 </head>
+
 <body>
   <button id="scrapeButton">Scrape Text</button>
   <div class="container">
     <div class="txt">
       <div id="scrapedText"></div>
     </div>
+    <hr>
     <div class="num">
       <div id="phoneNumbers"></div>
+    </div>
+    <hr>
+    <div class="websites">
+      <div id="links"></div>
 
     </div>
   </div>
   <script src="popup.js"></script>
 </body>
+
 </html>
