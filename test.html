@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>hello</h1>
+    <div>this is a text</div>
+    <script>
+        // Function to send a message to the content script and get the filtered data
+const getFilteredData = () => {
+  return new Promise((resolve, reject) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.tabs.sendMessage(tabs[0].id, { action: "getFilteredData" }, (response) => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError);
+        } else {
+          resolve(response);
+        }
+      });
+    });
+  });
+};
+
+// Function to display the filtered data in the popup
+const displayFilteredData = (data) => {
+  const container = document.getElementById('dataContainer');
+  container.innerHTML = '';
+
+  if (data.boldLargeFontSizeTexts.length === 0) {
+    container.innerHTML = '<p>No bold texts with font size > 15px found.</p>';
+  } else {
+    const ul = document.createElement('ul');
+    data.boldLargeFontSizeTexts.forEach(text => {
+      const li = document.createElement('li');
+      li.textContent = text;
+      ul.appendChild(li);
+    });
+    container.appendChild(ul);
+  }
+};
+
+// When the popup loads, get and display the filtered data
+document.addEventListener('DOMContentLoaded', () => {
+  getFilteredData()
+    .then(data => displayFilteredData(data))
+    .catch(error => {
+      const container = document.getElementById('dataContainer');
+      container.innerHTML = `<p>Error: ${error.message}</p>`;
+    });
+});
+
+    </script>
+</body>
+</html>

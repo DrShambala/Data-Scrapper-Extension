@@ -6,7 +6,7 @@ function scrapeTextNumbersAndLinks() {
   const phoneNumbers = [];
   const links = [];
   const phonePattern = /\b0\d{5}\s\d{5}\b/g;
-  const linkPattern = /https?:\/\/[^\s]*\.com\b/g;
+  const linkPattern = /https?:\/\/[^\s]*\.(?:com|org)\b/g;
 
   elements.forEach(element => {
         const fontSize = window.getComputedStyle(element).fontSize;

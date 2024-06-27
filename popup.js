@@ -15,13 +15,13 @@ document.getElementById('scrapeButton').addEventListener('click', () => {
             if (response.text && response.text.length > 0) {
               scrapedTextContainer.textContent = response.text.join('\n\n');
             } else {
-              scrapedTextContainer.textContent = 'No text found.';
+              scrapedTextContainer.textContent = '';
             }
 
             if (response.numbers && response.numbers.length > 0) {
               phoneNumbersContainer.textContent = response.numbers.join('\n');
             } else {
-              phoneNumbersContainer.textContent = 'No phone numbers found.';
+              phoneNumbersContainer.textContent = '';
             }
 
             if (response.links && response.links.length > 0) {
@@ -33,9 +33,9 @@ document.getElementById('scrapeButton').addEventListener('click', () => {
             // Debug: Log the response to ensure it's correct
             console.log('Response:', response);
           } else {
-            scrapedTextContainer.textContent = '';
-            phoneNumbersContainer.textContent = '';
-            linksContainer.textContent = '';
+            scrapedTextContainer.textContent = 'err.';
+            phoneNumbersContainer.textContent = 'err';
+            linksContainer.textContent = 'err';
           }
         });
       }
